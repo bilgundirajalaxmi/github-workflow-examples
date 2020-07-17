@@ -1,4 +1,4 @@
-name: conditional-steps-1
+name: conditional-steps-2 
 on: workflow_dispatch
 jobs:
   main:
