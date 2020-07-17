@@ -1,0 +1,29 @@
+name: conditional-jobs-2
+on: workflow_dispatch
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fail
+        run: exit 1
+  job-2:
+    needs: job-1
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: echo "I run only if Job 1 succeeds"
+  job-3:
+    needs: job-1
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: echo "I run only if Job 1 fails"
+  job-4:
+    needs: job-1
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: echo "I run always"

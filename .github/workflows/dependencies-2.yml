@@ -1,0 +1,14 @@
+name: dependencies-2
+on: workflow_dispatch
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fail
+        run: exit 1
+  job-2:
+    needs: job-1
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: echo "I'm Job 2"
