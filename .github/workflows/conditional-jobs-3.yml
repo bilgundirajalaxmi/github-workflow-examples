@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hello
-        run: "I'm Job 2"
+        run: echo "I'm Job 2"
