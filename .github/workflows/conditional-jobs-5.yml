@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hello
-        run: echo "I run only if workflow triggered by 'weibeld' (and Job 1 succeeds)"
+        run: echo "Runs if workflow triggered by 'weibeld'"
   job-3:
     needs: job-1
     if: always() && github.event.sender.login == 'foobar'
     runs-on: ubuntu-latest
     steps:
       - name: hello
-        run: echo "I run only if workflow triggered by 'foobar' (and Job 1 succeeds)"
+        run: echo "Runs if workflow triggered by 'foobar'"
