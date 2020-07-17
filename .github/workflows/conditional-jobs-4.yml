@@ -1,0 +1,22 @@
+name: conditional-jobs-4
+on: workflow_dispatch
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fail
+        run: exit 1
+  job-2:
+    needs: job-1
+    if: github.event.sender.login == 'weibeld'
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: echo "I run only if the workflow has been triggered by 'weibeld'"
+  job-3:
+    needs: job-1
+    if: github.event.sender.login == 'foobar'
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: echo "I run only if the workflow has been triggered by 'foobar'"
