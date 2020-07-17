@@ -8,7 +8,7 @@ jobs:
         run: exit 1
   job-2:
     needs: job-1
-    if: true
+    if: always() && 1 == 1
     runs-on: ubuntu-latest
     steps:
       - name: hello
