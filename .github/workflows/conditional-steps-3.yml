@@ -6,8 +6,6 @@ jobs:
     steps:
       - name: step-1
         run: echo "Step 1"
-      - name: step-2
-        run: echo "Step 2 fails" && exit 1
-      - name: step-3
+      - name: step-2-cancelled
         if: cancelled()
-        run: echo "Step 3 (runs only if workflow has been cancelled)"
+        run: echo "Step 2 (runs only if workflow has been cancelled)"
