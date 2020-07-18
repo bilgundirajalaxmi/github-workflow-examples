@@ -7,10 +7,10 @@ jobs:
       - name: step-1
         run: echo "Step 1"
       - name: step-2
-        run: echo "Step 2"
-      - name: step-3
+        run: echo "Step 2" && exit 1
+      - name: step-3-if-weibeld
         if: github.event.sender.login == 'weibeld'
         run: echo "Step 3 (runs only if workflow triggered by 'weibeld')"
-      - name: step-4
+      - name: step-4-if-foobar
         if: github.event.sender.login == 'foobar'
         run: echo "Step 4 (runs only if workflow triggered by 'foobar')"
