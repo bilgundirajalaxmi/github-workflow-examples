@@ -9,11 +9,8 @@ jobs:
       - name: step-2
         run: echo "Step 2"
       - name: step-3
-        if: success()
-        run: echo "Step 3 (runs only if all previous steps succeeded)"
+        if: github.event.sender.login == 'weibeld'
+        run: echo "Step 3 (runs only if workflow triggered by 'weibeld')"
       - name: step-4
-        if: failure()
-        run: echo "Step 4 (runs only if any previous step failed)"
-      - name: step-5
-        if: always()
-        run: echo "Step 5 (runs always)"
+        if: github.event.sender.login == 'foobar'
+        run: echo "Step 4 (runs only if workflow triggered by 'foobar')"
