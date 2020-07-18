@@ -7,13 +7,7 @@ jobs:
       - name: step-1
         run: echo "Step 1"
       - name: step-2
-        run: exit 1
+        run: echo "Step 2 fails" && exit 1
       - name: step-3
-        if: success()
-        run: echo "Step 3 (runs only if all previous steps succeeded)"
-      - name: step-4
-        if: failure()
-        run: echo "Step 4 (runs only if any previous step failed)"
-      - name: step-5
-        if: always()
-        run: echo "Step 5 (runs always)"
+        if: cancelled()
+        run: echo "Step 3 (runs only if workflow has been cancelled)"
